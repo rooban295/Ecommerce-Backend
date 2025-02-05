@@ -41,7 +41,7 @@ public class AppConfig {
             @Override
             public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
                 CorsConfiguration cfg = new CorsConfiguration();
-                cfg.setAllowedOrigins(List.of("http://localhost:4500"));
+                cfg.setAllowedOrigins(List.of("http://localhost:4500","https://ecommerce-rho-khaki.vercel.app/"));
                 cfg.setAllowCredentials(true);
                 cfg.addAllowedHeader("*");
                 cfg.addAllowedMethod("*");
