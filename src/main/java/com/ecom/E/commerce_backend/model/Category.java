@@ -2,11 +2,11 @@ package com.ecom.E.commerce_backend.model;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.util.List;
 
@@ -21,6 +21,10 @@ public class Category {
     private Long id;
 
     private String categoryName;
+
+    private String categoryImageUrl;
+
+    private String bannerImageUrl;
 
     @OneToMany(mappedBy = "category",cascade = CascadeType.ALL)
     @JsonIgnore//it is very importance to stop loop response
