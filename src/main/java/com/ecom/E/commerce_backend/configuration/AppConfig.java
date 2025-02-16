@@ -50,7 +50,7 @@ public class AppConfig {
                 cfg.setAllowedOrigins(List.of(frontendUrl,"http://localhost:4500"));
                 cfg.setAllowCredentials(true);
                 cfg.setAllowedMethods(Collections.singletonList("*"));
-                cfg.setAllowedMethods(Collections.singletonList("*"));
+                cfg.setAllowedHeaders(Collections.singletonList("*"));
                 cfg.setExposedHeaders(Arrays.asList("Authorization"));
                 return cfg;
             }
