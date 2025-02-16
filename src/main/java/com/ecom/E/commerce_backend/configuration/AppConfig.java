@@ -51,7 +51,7 @@ public class AppConfig {
                 cfg.setAllowCredentials(true);
                 cfg.setAllowedMethods(Collections.singletonList("*"));
                 cfg.setAllowedHeaders(Collections.singletonList("*"));
-                cfg.setExposedHeaders(Arrays.asList("Authorization"));
+                cfg.setExposedHeaders(List.of("Authorization"));
                 return cfg;
             }
         };
