@@ -15,6 +15,8 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 @Configuration
@@ -27,7 +29,7 @@ public class AppConfig {
     public SecurityFilterChain securityFilterChain (HttpSecurity http) throws Exception {
 
         return http
-                .csrf(AbstractHttpConfigurer::disable)
+                .csrf(customizer->customizer.disable())
                 .authorizeHttpRequests(request->
                         request.requestMatchers("api/admin/**").hasAnyRole("ADMIN")
                                 .requestMatchers("api/cart/**").authenticated()
@@ -47,10 +49,9 @@ public class AppConfig {
                 CorsConfiguration cfg = new CorsConfiguration();
                 cfg.setAllowedOrigins(List.of(frontendUrl,"http://localhost:4500"));
                 cfg.setAllowCredentials(true);
-                cfg.addAllowedHeader("*");
-                cfg.addAllowedMethod("*");
-                cfg.addExposedHeader("Authorization");
-
+                cfg.setAllowedMethods(Collections.singletonList("*"));
+                cfg.setAllowedMethods(Collections.singletonList("*"));
+                cfg.setExposedHeaders(Arrays.asList("Authorization"));
                 return cfg;
             }
         };
