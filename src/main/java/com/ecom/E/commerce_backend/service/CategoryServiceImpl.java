@@ -47,6 +47,8 @@ public class CategoryServiceImpl implements CategoryService {
             throw new Exception("Category not found");
         }
         updatedCategory.get().setCategoryName(category.getCategoryName());
+        updatedCategory.get().setCategoryImageUrl(category.getCategoryImageUrl());
+        updatedCategory.get().setBannerImageUrl(category.getBannerImageUrl());
         return new ResponseEntity<>(categoryRepo.save(updatedCategory.get()),HttpStatus.ACCEPTED);
     }
 }

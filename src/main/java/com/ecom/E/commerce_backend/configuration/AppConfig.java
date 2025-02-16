@@ -2,6 +2,7 @@ package com.ecom.E.commerce_backend.configuration;
 
 
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -18,6 +19,9 @@ import java.util.List;
 
 @Configuration
 public class AppConfig {
+
+    @Value("${FRONTEND_URL}")  // this frontend url is get from the evn file
+    private String frontendUrl;
 
     @Bean
     public SecurityFilterChain securityFilterChain (HttpSecurity http) throws Exception {
@@ -41,7 +45,7 @@ public class AppConfig {
             @Override
             public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
                 CorsConfiguration cfg = new CorsConfiguration();
-                cfg.setAllowedOrigins(List.of("http://localhost:4500","https://ecommerce-rho-khaki.vercel.app/"));
+                cfg.setAllowedOrigins(List.of(frontendUrl,"http://localhost:4500"));
                 cfg.setAllowCredentials(true);
                 cfg.addAllowedHeader("*");
                 cfg.addAllowedMethod("*");
